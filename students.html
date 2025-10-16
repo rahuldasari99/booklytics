@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library Students Table</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    text-align: left;
+  }
+  th {
+    background-color: #f4f4f4;
+  }
+  tr:nth-child(even) {
+    background-color: #fafafa;
+  }
+</style>
+</head>
+<body>
+
+<h1>Library Students Data</h1>
+<div class="table-container">
+  <table id="studentTable">
+    <thead>
+      <tr>
+        <th>Student ID</th>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Year</th>
+        <th>Book Title</th>
+        <th>Category</th>
+        <th>Borrow Date</th>
+        <th>Return Date</th>
+        <th>Days Borrowed</th>
+        <th>Fine (₹)</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Data will be inserted here -->
+    </tbody>
+  </table>
+</div>
+
+<script>
+function fetchStudentData() {
+  fetch("data.json")
+    .then(res => res.json())
+    .then(data => {
+      const students = data.Sheet1; // Access the array inside Sheet1
+      const tbody = document.querySelector("#studentTable tbody");
+      tbody.innerHTML = ""; // Clear any existing rows
+
+      students.forEach(student => {
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+          <td>${student.Student_ID}</td>
+          <td>${student.Student_Name}</td>
+          <td>${student.Department}</td>
+          <td>${student.Year}</td>
+          <td>${student.Book_Title}</td>
+          <td>${student.Category}</td>
+          <td>${student.Borrow_Date}</td>
+          <td>${student.Return_Date}</td>
+          <td>${student.Days_Borrowed}</td>
+          <td>₹${student.Fine_Amount}</td>
+          <td>⭐${student.Rating}</td>
+        `;
+
+        tbody.appendChild(row);
+      });
+    })
+    .catch(err => console.error("Error loading data:", err));
+}
+
+// Call the function
+fetchStudentData();
+</script>
+
+</body>
+</html>
