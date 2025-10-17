@@ -169,7 +169,9 @@ resetBtn?.addEventListener("click", () => {
     });
 
     // Update counts
-    studentCount.textContent = `Total Students: ${students.length}`;
+    if (studentCount) {
+  studentCount.textContent = `Total Students: ${students.length}`;
+}
     if(fineCount) {
       const totalFine = students.reduce((sum, s) => sum + (parseFloat(s.Fine_Amount)||0), 0);
       fineCount.textContent = `Total Fine: ₹${totalFine.toFixed(2)}`;
