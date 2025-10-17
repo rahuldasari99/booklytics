@@ -1,6 +1,7 @@
 window.addEventListener("DOMContentLoaded", () => {
   const studentnameele = document.getElementById("ustudentname");
   const searchForm = document.getElementById("searchForm");
+  
 
   // Load all students initially
   fetchStudentData();
@@ -19,6 +20,7 @@ function fetchStudentData() {
       const students = data.Sheet1;
       const tbody = document.querySelector("#studentTable tbody");
       tbody.innerHTML = "";
+      
 
       students.forEach(student => {
         const row = document.createElement("tr");

@@ -57,9 +57,16 @@
     <!-- navbar end -->
 
     <h1 class="text-center mt-4">Library Books Data</h1>
+   
     
 
     <div class="table-responsive container my-4">
+      <div class="d-flex gap-3 mb-3">
+  <select id="categoryFilter" class="form-select w-auto"></select>
+  <select id="ratingFilter" class="form-select w-auto"></select>
+</div>
+
+       <span id="bookCount" class="badge bg-success fs-6">Total Books: 0</span>
       <table id="studentTable" class="table table-striped table-bordered">
         <thead class="table-success">
           <tr>
