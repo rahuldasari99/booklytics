@@ -42,7 +42,7 @@ window.addEventListener("DOMContentLoaded", () => {
       student.Book_Title.toLowerCase().includes(term) ||
       student.Category.toLowerCase().includes(term)
     );
-
+   
     renderTable(filtered);
   }
 
